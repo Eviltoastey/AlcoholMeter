@@ -9,8 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 
 /**
  * Session controller.
- *
- * @Route("session")
  */
 class SessionController extends Controller
 {
@@ -23,8 +21,8 @@ class SessionController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $sessions = $em->getRepository('AppBundle:Session')->findAll();
+        $user = $this->getUser();
+        $sessions = $em->getRepository('AppBundle:Session')->findByUserId($user);
 
         return $this->render('session/index.html.twig', array(
             'sessions' => $sessions,
@@ -34,33 +32,29 @@ class SessionController extends Controller
     /**
      * Creates a new session entity.
      *
-     * @Route("/new", name="session_new")
+     * @Route("session/new", name="session_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
+        $user = $this->getUser();
         $session = new Session();
-        $form = $this->createForm('AppBundle\Form\SessionType', $session);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($session);
-            $em->flush();
+        $session->setStartTime(new \DateTime());
+        $session->setUserId($user);
 
-            return $this->redirectToRoute('session_show', array('id' => $session->getId()));
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($session);
+        $em->flush();
 
-        return $this->render('session/new.html.twig', array(
-            'session' => $session,
-            'form' => $form->createView(),
-        ));
+        return $this->redirectToRoute('beverage_index');
+
     }
 
     /**
      * Finds and displays a session entity.
      *
-     * @Route("/{id}", name="session_show")
+     * @Route("session/{id}", name="session_show")
      * @Method("GET")
      */
     public function showAction(Session $session)
@@ -76,7 +70,7 @@ class SessionController extends Controller
     /**
      * Displays a form to edit an existing session entity.
      *
-     * @Route("/{id}/edit", name="session_edit")
+     * @Route("/session{id}/edit", name="session_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Session $session)
@@ -91,17 +85,17 @@ class SessionController extends Controller
             return $this->redirectToRoute('session_edit', array('id' => $session->getId()));
         }
 
-        return $this->render('session/edit.html.twig', array(
+        return $this->render('session/index.html.twig', array(
             'session' => $session,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
      * Deletes a session entity.
      *
-     * @Route("/{id}", name="session_delete")
+     * @Route("session/{id}", name="session_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Session $session)

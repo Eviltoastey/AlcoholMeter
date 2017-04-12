@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-content">
+
+            <h1>Kies een drankje</h1>
+
+            <div class="beverage-container col-sm-12">
+                {% for beverage in beverages %}
+                        <a href="{{ path('beverage_show', { 'id': beverage.id }) }}">
+                            <div class="beverage col-sm-3">
+                                <div class="beverage-title">
+                                    <h4>{{ beverage.name }}</h4>
+                                </div>
+                                <p>alcohol: {{ beverage.alcohol }}</p>
+                                <p>inhoud: {{ beverage.amount }}</p>
+                            </div>
+                        </a>
+                {% endfor %}
+            </div>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('beverage_new') }}">Create a new beverage</a>#}
+        {#</li>#}
+    {#</ul>#}
+{% endblock %}

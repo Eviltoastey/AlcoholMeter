@@ -6756,6 +6756,15 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 
+.beverage {
+  background: whitesmoke;
+  box-shadow: 5px 10px 10px grey;
+  margin: 10px;
+}
+.beverage-title {
+  text-align: center;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -6765,4 +6774,16 @@ button.close {
 
 .btn-margin {
   margin: 15px 0;
+}
+
+.page-content {
+  padding: 5rem 3.5rem;
+}
+.new-session-container {
+  padding: 3rem 0;
+  text-align: center;
+}
+.new-session-btn {
+  padding: 2rem;
+  font-size: 18px;
 }

@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Session
  *
@@ -22,9 +24,7 @@ class Session
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="UserId", type="integer")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $userId;
 
@@ -46,7 +46,7 @@ class Session
     /**
      * Get id
      *
-     * @return int
+     * @return User
      */
     public function getId()
     {
@@ -56,11 +56,11 @@ class Session
     /**
      * Set userId
      *
-     * @param integer $userId
+     * @param User $userId
      *
      * @return Session
      */
-    public function setUserId($userId)
+    public function setUserId(User $userId)
     {
         $this->userId = $userId;
 
