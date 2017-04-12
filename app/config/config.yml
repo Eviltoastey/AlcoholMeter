@@ -80,3 +80,6 @@ fos_user:
     from_email:
         address: "AlcoholMeter"
         sender_name: "alcoholmeter@gmail.com"
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType

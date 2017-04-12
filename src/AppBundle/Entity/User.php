@@ -28,21 +28,21 @@ class User extends BaseUser
      *
      * @ORM\Column(name="Age", type="integer")
      */
-    private $age;
+    protected $age;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="Gender", type="boolean")
      */
-    private $gender;
+    protected $gender;
 
     /**
      * @var int
      *
      * @ORM\Column(name="Weight", type="integer")
      */
-    private $weight;
+    protected $weight;
 
 
     /**

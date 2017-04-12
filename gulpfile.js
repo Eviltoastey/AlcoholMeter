@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var uglifycss = require('gulp-uglifycss');
@@ -29,6 +30,13 @@ gulp.task('css', function () {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('web/css'));
 });
+
+gulp.task('watch', function () {
+    // Endless stream mode
+    gulp.watch('app/Resources/public/less/**/*.less', ['css']);
+});
+
+
 
 //IMAGE TASK: Just pipe images from project folder to public web folder
 gulp.task('img', function() {

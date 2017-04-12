@@ -6756,6 +6756,13 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 
-body {
-  color: red;
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 200px auto;
+}
+
+
+.btn-margin {
+  margin: 15px 0;
 }

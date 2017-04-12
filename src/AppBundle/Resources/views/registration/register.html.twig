@@ -1,0 +1,27 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block body %}{% endblock %}
+{% block fos_user_content %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <div class="col-sm-12 container-fluid">
+                <div class="container">
+                    <div class="form-signin">
+                        {{ form_row(form.username, { 'attr': {'class': 'form-control'}, 'label': 'Gebruikersnaam'}) }}
+                        {{ form_row(form.age, { 'attr': {'class': 'form-control'}, 'label': 'Leeftijd'}) }}
+                        {{ form_row(form.weight, { 'attr': {'class': 'form-control'}, 'label': 'Gewicht'}) }}
+                        {{ form_row(form.gender, { 'attr': {'class': 'form-control'}, 'label': 'Geslacht'}) }}
+                        {{ form_row(form.email, { 'attr': {'class': 'form-control'}, 'label': 'email adres'}) }}
+                        {{ form_row(form.plainPassword.first, { 'attr': {'class': 'form-control'}, 'label': 'Wachtwoord'}) }}
+                        {{ form_row(form.plainPassword.second, { 'attr': {'class': 'form-control'}, 'label': 'Herhaal wachtwoord'}) }}
+
+                        <div>
+                            <input class="login--submit btn btn-lg btn-primary btn-block btn-padding btn-margin" type="submit" value="registreren" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+{% endblock fos_user_content %}
