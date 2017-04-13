@@ -66,37 +66,13 @@ class Drank
     }
 
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     *
-     * @return Drank
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
      * Set sessionId
      *
-     * @param integer $sessionId
+     * @param Session $sessionId
      *
      * @return Drank
      */
-    public function setSessionId($sessionId)
+    public function setSessionId(Session $sessionId)
     {
         $this->sessionId = $sessionId;
 
@@ -106,7 +82,7 @@ class Drank
     /**
      * Get sessionId
      *
-     * @return int
+     * @return Session
      */
     public function getSessionId()
     {
@@ -116,11 +92,11 @@ class Drank
     /**
      * Set beverageId
      *
-     * @param integer $beverageId
+     * @param Beverage $beverageId
      *
      * @return Drank
      */
-    public function setBeverageId($beverageId)
+    public function setBeverageId(Beverage $beverageId)
     {
         $this->beverageId = $beverageId;
 
@@ -130,7 +106,7 @@ class Drank
     /**
      * Get beverageId
      *
-     * @return int
+     * @return Beverage
      */
     public function getBeverageId()
     {

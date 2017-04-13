@@ -46,7 +46,7 @@ class Session
     /**
      * Get id
      *
-     * @return User
+     * @return int
      */
     public function getId()
     {
@@ -70,7 +70,7 @@ class Session
     /**
      * Get userId
      *
-     * @return int
+     * @return User
      */
     public function getUserId()
     {

@@ -6765,6 +6765,17 @@ button.close {
   text-align: center;
 }
 
+.drank-btn {
+  margin: 20px 10px;
+  width: 43%;
+}
+.drank-btn a {
+  color: white;
+}
+.drank-btn a:hover {
+  text-decoration: none;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

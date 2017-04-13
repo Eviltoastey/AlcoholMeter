@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Beverage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Beverage controller.
@@ -23,11 +24,14 @@ class BeverageController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
 
         $beverages = $em->getRepository('AppBundle:Beverage')->findAll();
+        $session = $em->getRepository('AppBundle:Session')->findOneByUserId($user);
 
         return $this->render('beverage/index.html.twig', array(
             'beverages' => $beverages,
+            'session' => $session,
         ));
     }
 
