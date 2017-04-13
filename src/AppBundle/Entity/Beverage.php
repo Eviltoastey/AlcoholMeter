@@ -36,14 +36,6 @@ class Beverage
     private $alcohol;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="Amount", type="float")
-     */
-    private $amount;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -101,28 +93,5 @@ class Beverage
         return $this->alcohol;
     }
 
-    /**
-     * Set amount
-     *
-     * @param float $amount
-     *
-     * @return Beverage
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return float
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
 }
 

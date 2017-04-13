@@ -22,25 +22,37 @@ class Drank
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="UserId", type="integer")
-     */
-    private $userId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="SessionId", type="integer")
+     * @ORM\ManyToOne(targetEntity="Session")
      */
     private $sessionId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="BeverageId", type="integer")
+     * @ORM\ManyToOne(targetEntity="Beverage")
      */
     private $beverageId;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Amount", type="float")
+     */
+    private $amount;
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param mixed $amount
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
 
 
     /**

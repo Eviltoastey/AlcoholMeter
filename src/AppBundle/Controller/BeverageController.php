@@ -119,6 +119,16 @@ class BeverageController extends Controller
     }
 
     /**
+     * Add beverage and show info page
+     *
+     * @Route("/session/{sessionId}", name="beverage_session")
+     * @Method("POST")
+     */
+    public function addBeverageToSession() {
+
+    }
+
+    /**
      * Creates a form to delete a beverage entity.
      *
      * @param Beverage $beverage The beverage entity
