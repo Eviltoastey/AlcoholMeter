@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
+use AppBundle\Entity\Drank;
+use AppBundle\Entity\Beverage;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Session controller.
@@ -40,15 +44,17 @@ class SessionController extends Controller
     {
         $user = $this->getUser();
         $session = new Session();
-
-        $session->setStartTime(new \DateTime());
         $session->setUserId($user);
+
+        $date = new \DateTime();
+
+        $session->setStartTime($date);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($session);
         $em->flush();
 
-        return $this->redirectToRoute('beverage_index');
+        return $this->redirectToRoute('beverage_index', array('session' => $session->getId()));
 
     }
 

@@ -31,14 +31,14 @@ class Session
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="StartTime", type="date")
+     * @ORM\Column(name="StartTime", type="datetime", nullable=true )
      */
     private $startTime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="EndTime", type="date", nullable=true)
+     * @ORM\Column(name="EndTime", type="datetime", nullable=true)
      */
     private $endTime;
 

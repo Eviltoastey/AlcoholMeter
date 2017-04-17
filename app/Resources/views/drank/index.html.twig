@@ -17,7 +17,7 @@
                         <a href="">Glas is op</a>
                     </div>
                     <div class="drank-btn btn btn-danger">
-                        <a href="">Stop met drinken</a>
+                        <a href="{{ path('stop_drinking', {'session' : app.request.get('session').id}) }}">Stop met drinken</a>
                     </div>
                 </div>
                 <div class="drank col-sm-4"></div>

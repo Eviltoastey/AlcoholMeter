@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Beverage;
+use AppBundle\Entity\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,16 +19,20 @@ class BeverageController extends Controller
     /**
      * Lists all beverage entities.
      *
-     * @Route("/", name="beverage_index")
+     * @Route("/{session}", name="beverage_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Session $session)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
+        $session->setStartTime(new \DateTime());
+
+        $em->persist($session);
+        $em->flush();
+
         $beverages = $em->getRepository('AppBundle:Beverage')->findAll();
-        $session = $em->getRepository('AppBundle:Session')->findOneByUserId($user);
 
         return $this->render('beverage/index.html.twig', array(
             'beverages' => $beverages,
