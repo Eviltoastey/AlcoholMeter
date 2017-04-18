@@ -8,7 +8,16 @@
                 <div class="drank col-sm-4"></div>
                 <div class="drank col-sm-4">
                    <h1>U bent gestopt met drinken</h1>
-                    {{ dump(session) }}
+                    uw promillage is {{ promille }}.
+                    {{ effects.tip }}
+
+                    <div>
+                        <ul>
+                            {% for effects in effects.effects %}
+                            <li>{{ effects }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     <div class="drank col-sm-4"></div>
             </div>
             </tbody>

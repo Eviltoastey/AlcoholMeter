@@ -6766,8 +6766,8 @@ button.close {
 }
 
 .drank-btn {
-  margin: 20px 10px;
-  width: 43%;
+  margin-top: 10px;
+  width: 100%;
 }
 .drank-btn a {
   color: white;
