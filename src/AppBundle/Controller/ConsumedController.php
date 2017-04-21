@@ -25,7 +25,7 @@ class ConsumedController extends Controller
         $user = $this->getUser();
         $drank = new Drank();
 
-        $drank->setAmount(0.5);
+        $drank->setAmount(500);
         $drank->setBeverageId($beverage);
         $drank->setSessionId($session);
 
@@ -41,6 +41,29 @@ class ConsumedController extends Controller
 
     }
 
+    /**
+     * For AJAX call to put data in db
+     *
+     * @Route("drank/AJAX", name="AJAX_call")
+     * @Method({"GET", "POST"})
+     */
+    public function AJAXCallAction(Request $request)
+    {
+        if ($request->isXMLHttpRequest()) {
+            $data = $request->request->get('request');
+            var_dump($data);die();
+            $user = $this->getUser();
+            $em = $this->getDoctrine()->getManager();
+
+            die();
+
+            $em->persist();
+            $em->flush();
+
+            return 'yo';
+        }
+
+    }
 
     /**
      * stops a new consumed entity.
@@ -123,9 +146,9 @@ class ConsumedController extends Controller
 
         $totalAlcoholInGrams = $totalAlcoholPercentage * 0.008;
 
-        $totalAmountConsumedInML = $totalAmountConsumed * 1000;
+//        $totalAmountConsumedInML = $totalAmountConsumed * 1000;
 
-        $totalAlcoholInGramsConsumed = $totalAlcoholInGrams * $totalAmountConsumedInML;
+        $totalAlcoholInGramsConsumed = $totalAlcoholInGrams * $totalAmountConsumed;
 
         $BACPercentage = $totalAlcoholInGramsConsumed / ($userWeight * 1000 * $r) * 100;
 

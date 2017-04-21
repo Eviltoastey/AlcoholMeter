@@ -1,33 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="page-content">
+    <body class="drankPage">
+        <div class="container">
+            <div class="page-content">
 
-            <div class="drank-container col-sm-12">
-                <div class="drank col-sm-4"></div>
-                <div class="drank col-sm-4">
-                    <h1>U bent {{ beverage.name }} aan het drinken</h1>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
 
-                    <p>alcohol: {{ beverage.alcohol }}</p>
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Glas is leeg.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Heeft u uw drankje op? Kies dan een van de volgende opties:</p>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn btn-success no-link-style">
+                                    <a href="{{ path('beverage_index', { 'beverage': beverage.id, 'session' : app.request.get('session').id}) }}">Nog een drankje</a>
+                                </div>
+                                <div class="btn btn-danger no-link-style">
+                                    <a href="{{ path('stop_drinking', {'session' : app.request.get('session').id}) }}">Stop met drinken</a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
 
-                    <div class="drank-counter bg-success">U heeft nog {{ drank.amount }} cl</div>
-
-                    <div class="drank-btn btn btn-success">
-                        <a href="{{ path('beverage_index', { 'beverage': beverage.id, 'session' : app.request.get('session').id}) }}">Glas is op</a>
-                    </div>
-                    <div class="drank-btn btn btn-danger">
-                        <a href="{{ path('stop_drinking', {'session' : app.request.get('session').id}) }}">Stop met drinken</a>
                     </div>
                 </div>
-                <div class="drank col-sm-4"></div>
+
+                <div class="drank-container col-sm-12">
+                    <div class="drank col-sm-4"></div>
+                    <div class="drank col-sm-4">
+
+                        <div class="js-drank-data" data-drankid="{{ drank.id }}"></div>
+
+                        <h1>U bent {{ beverage.name }} aan het drinken</h1>
+
+                        <p>alcohol: {{ beverage.alcohol }}</p>
+
+                        <div class="drank-counter bg-success">U heeft nog <div id="contains"></div> ml</div>
+
+                        <div class="drank-btn btn btn-success">
+                            <a href="{{ path('beverage_index', { 'beverage': beverage.id, 'session' : app.request.get('session').id}) }}">Glas is op</a>
+                        </div>
+                        <div class="drank-btn btn btn-danger">
+                            <a href="{{ path('stop_drinking', {'session' : app.request.get('session').id}) }}">Stop met drinken</a>
+                        </div>
+                        <div>
+                            <button class="getEmptyWeight btn btn-primary drank-btn">Weeg glas</button>
+                        </div>
+                    </div>
+                    <div class="drank col-sm-4"></div>
+                </div>
+                </tbody>
+                </table>
+
             </div>
-            </tbody>
-            </table>
-
         </div>
-    </div>
-
+    </body>
     {#<ul>#}
     {#<li>#}
     {#<a href="{{ path('beverage_new') }}">Create a new beverage</a>#}

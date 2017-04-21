@@ -34,6 +34,7 @@ gulp.task('css', function () {
 gulp.task('watch', function () {
     // Endless stream mode
     gulp.watch('app/Resources/public/less/**/*.less', ['css']);
+    gulp.watch('app/Resources/public/js/**/*.js', ['js']);
 });
 
 

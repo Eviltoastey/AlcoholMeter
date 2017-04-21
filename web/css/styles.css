@@ -6765,6 +6765,15 @@ button.close {
   text-align: center;
 }
 
+.data {
+  display: none;
+}
+.no-link-style a {
+  color: white;
+}
+.no-link-style a:hover {
+  text-decoration: none;
+}
 .drank-btn {
   margin-top: 10px;
   width: 100%;

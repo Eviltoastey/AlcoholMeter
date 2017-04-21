@@ -1,0 +1,5 @@
+ajax_call:
+path:     /drank/AJAX
+defaults: { _controller: "@AppBundle:Consumed:AJAXCall" }
+options:
+    expose: true
